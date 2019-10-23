@@ -14,3 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::prefix('students')->group(function () {
+    Route::get("show-list", "StudentController@getAll")->name("student.getAll");
+    Route::get("create", "StudentController@create")->name("student.formCreate");
+    Route::post("create", "StudentController@store")->name("student.create");
+    Route::get("delete/{id}", "StudentController@delete")->name("student.delete");
+    Route::get("edit/{id}", "StudentController@edit")->name("student.edit");
+    Route::post("edit/{id}", "StudentController@update")->name("student.edit");
+});
+
